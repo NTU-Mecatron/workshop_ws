@@ -16,6 +16,12 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(workshop_interfaces REQUIRED)
 
+add_executable(minimal_publisher src/minimal_publisher.cpp)
+ament_target_dependencies(minimal_publisher rclcpp workshop_interfaces)
+
+add_executable(minimal_subscriber src/minimal_subscriber.cpp)
+ament_target_dependencies(minimal_subscriber rclcpp workshop_interfaces)
+
 add_executable(minimal_server src/minimal_server.cpp)
 ament_target_dependencies(minimal_server rclcpp workshop_interfaces)
 
@@ -23,6 +29,8 @@ add_executable(minimal_client src/minimal_client.cpp)
 ament_target_dependencies(minimal_client rclcpp workshop_interfaces)
 
 install(TARGETS
+  minimal_publisher
+  minimal_subscriber
   minimal_server
   minimal_client
   DESTINATION lib/${PROJECT_NAME})

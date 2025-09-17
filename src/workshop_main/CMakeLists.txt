@@ -9,12 +9,12 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+include_directories(include)
+
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(workshop_interfaces REQUIRED)
-
-include_directories(include)
 
 add_executable(minimal_server src/minimal_server.cpp)
 ament_target_dependencies(minimal_server rclcpp workshop_interfaces)

@@ -7,6 +7,7 @@ MinimalServer::MinimalServer()
 		"add_three_ints",
 		std::bind(&MinimalServer::handle_add_three_ints, this, _1, _2)
 	);
+	RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Server is running!");
 }
 
 void MinimalServer::handle_add_three_ints(

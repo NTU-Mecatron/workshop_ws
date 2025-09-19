@@ -1,4 +1,4 @@
 build/
 install/
 log/
-workshop_main/workshop_main/__pycache__
+workshop_main/workshop_main/__pycache__/

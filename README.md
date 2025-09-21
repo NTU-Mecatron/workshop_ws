@@ -5,13 +5,23 @@ This repository contains the code and resources for the Mecatron software traini
 ## Repository Structure
 
 The workspace contains several key packages:
-- **workshop_interfaces** - Custom message and service definitions for inter-node communication
-- **workshop_main** - Core implementation packages with example nodes and applications
+- **workshop_main** - Core implementation packages with example nodes and applications for publisher and subscriber patterns
+- **workshop_service** - Core implementation packages with example nodes and applications for service and client patterns
 
 ## Getting Started
 
 This workspace is organized for hands-on training and demonstration purposes, helping participants learn and practice robotics software development using modern ROS 2 practices and ament_cmake build tools.
 
-## Build System
+## Notes to Avoid Confusion
+### Publishers
 
-The workspace uses the standard ROS 2 colcon build system with properly configured build, install, and log directories for a complete development environment.
+In the `minimal_publisher.py` file, we created a timer to call the timer_callback function every `0.5` seconds. The function publishes a `Float32` message with a value of `0.5` to the topic `/mavros/setpoint_velocity/cmd_vel_unstamped/x` at line 18, by:
+```python
+self.publisher_.publish(msg)
+```
+
+**Important Notes:**
+
+* The publish function does not have to be inside the timer callback.
+* You can call it anywhere: in a subscriber callback, service callback, or even in the class constructor (__init__).
+* The timer is just a convenient way to call a function periodically.

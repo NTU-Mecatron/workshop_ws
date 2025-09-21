@@ -2,6 +2,13 @@
 
 This repository contains the probation task, focusing on autonomous gate navigation using Unity simulation integrated with ROS 2.
 
+**You should NOT clone this repository from Mecatron github organization directly.** Instead, you should fork this repository to your own github and clone from it *(Please ask ChatGPT how to fork a github repository if you are unsure)*. After you fork and clone the repository, you should be on branch `probation/task`. If you are not on this branch, please switch to it using:
+```bash
+git checkout probation/task
+```
+
+You are supposed to implement your solution in this branch `probation/task`. After you finish the task, please send us the link to your forked repository.
+
 ## 1. Problem Statement
 
 **Task Goal**: Navigate an autonomous underwater vehicle (AUV) through a gate in a simulated environment.
@@ -52,11 +59,13 @@ probation_ws/
 1. Clone and build the workspace:
    ```bash
    cd ~
-   git clone https://github.com/NTU-Mecatron/probation_ws.git
+   git clone your_forked_repo_url
    cd probation_ws
    colcon build --symlink-install
    source install/setup.bash
    ```
+
+If you are unsure about how to run your ROS2 implementation with Unity simulation, please refer to the [Appendix 5.2](#52-proper-setup-flow) for a proper setup flow.
 
 ## 3. Things to Note About the Simulation
 
@@ -83,7 +92,7 @@ To support your implementation, here is a suggested logic flow:
 
 The logic flow above is one of many possible solutions. Feel free to explore and implement your own strategies.
 
-Note: The vehicle's initial position may sometimes face obstacles or walls. If this occurs, you may choose either to reset the simulation or implement obstacle avoidance logic. Please refer the [Appendix](#5-appendix) for more details.
+Note: The vehicle's initial position may sometimes face obstacles or walls. If this occurs, you may choose either to reset the simulation or implement obstacle avoidance logic. Please refer the [Appendix 5.1](#51-obstacle-avoidance-note) for more details.
 
 ### Recommended Implementation Flow
 ```python
@@ -142,8 +151,9 @@ To set up and run the simulation with ROS2 properly, follow these steps before s
    ros2 topic echo /mavros/state
    ```
 
-### 5.3. Useful Commands
+### 5.3. Useful Reference
 
+#### Useful commands
 ```bash
 # Monitor system status
 ros2 topic echo /mavros/state
@@ -154,9 +164,11 @@ ros2 service list
 # Set vehicle mode
 ros2 service call /mavros/set_mode mavros_msgs/srv/SetMode "{base_mode: 0, custom_mode: 'GUIDED'}"
 
-# Monitor vehicle position
-ros2 topic echo /mavros/local_position/pose
 ```
+
+#### Useful links
+
+- [ROS2 Official Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
 
 ---
 

@@ -173,3 +173,18 @@ ros2 service call /mavros/set_mode mavros_msgs/srv/SetMode "{base_mode: 0, custo
 ---
 
 **Good luck with your probation task!** Focus on understanding the integration between simulation, vision processing, and vehicle control. The key is building a robust system that handles the imperfect nature of real-world sensing and control.
+
+
+### 5.4. Notes to Avoid Confusion
+#### Publishers
+
+In the `minimal_publisher.py` file, we created a timer to call the timer_callback function every `0.5` seconds. The function publishes a `Float32` message with a value of `0.5` to the topic `/mavros/setpoint_velocity/cmd_vel_unstamped/x` at line 18, by:
+```python
+self.publisher_.publish(msg)
+```
+
+**Important Notes:**
+
+* In order to publish, you don't need to have a timer
+* You can call it anywhere: in a subscriber callback, service callback, or even in the class constructor (__init__).
+* The timer is just a convenient way to call a function periodically.

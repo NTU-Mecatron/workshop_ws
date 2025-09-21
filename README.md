@@ -153,7 +153,7 @@ To set up and run the simulation with ROS2 properly, follow these steps before s
 ### 5.3. Notes to Avoid Confusion
 #### Publishers
 
-In the `minimal_publisher.py` file, we created a timer to call the timer_callback function every `0.5` seconds. The function publishes a `Float32` message with a value of `0.5` to the topic `/mavros/setpoint_velocity/cmd_vel_unstamped/x` at line 18, by:
+In the workshop on Saturday, when working on the `minimal_publisher.py` file, we created a timer to call the timer_callback function every `0.5` seconds. The function publishes a `Float32` message with a value of `0.5` to the topic `/mavros/setpoint_velocity/cmd_vel_unstamped/x` at line 18, by:
 ```python
 self.publisher_.publish(msg)
 ```

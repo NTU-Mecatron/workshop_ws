@@ -7,7 +7,7 @@ This repository contains the probation task, focusing on autonomous gate navigat
 git checkout probation/task
 ```
 
-You are supposed to implement your solution in this branch `probation/task`. After you finish the task, please send us the link to your forked repository.
+You are supposed to implement your solution in this branch `probation/task` in either Python or C++. After you finish the task, please send us the link to your forked repository.
 
 ## 1. Problem Statement
 

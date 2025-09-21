@@ -64,7 +64,14 @@ probation_ws/
    git clone your_forked_repo_url
    cd probation_ws
    colcon build --symlink-install
-   source install/setup.bash
+   source install/local_setup.bash
+   ```
+
+2. Additional setup:
+
+   To avoid repeatedly sourcing the workspace, you may run the following command to add source to `~/.bashrc` file:
+   ```bash
+   echo "source ~/probation_ws/install/local_setup.bash" >> ~/.bashrc
    ```
 
 If you are unsure about how to run your ROS2 implementation with Unity simulation, please refer to the [Appendix 5.2](#52-proper-setup-flow) for a proper setup flow.
@@ -94,23 +101,7 @@ To support your implementation, here is a suggested logic flow:
 
 The logic flow above is one of many possible solutions. Feel free to explore and implement your own strategies.
 
-Note: The vehicle's initial position may sometimes face obstacles or walls. If this occurs, you may choose either to reset the simulation or implement obstacle avoidance logic. Please refer the [Appendix 5.1](#51-obstacle-avoidance-note) for more details.
-
-### Recommended Implementation Flow
-```python
-# Pseudocode structure
-1. Set vehicle to GUIDED mode
-2. Descend to operational depth
-3. Start searching action to find gate
-4. While not gate_detected:
-   - Process vision data
-   - Filter for gate detections
-   - Continue searching action
-5. Once gate detected:
-   - Perform centering action
-   - Approach gate while maintaining alignment
-   - Execute go straight through gate
-```
+Note: The vehicle's initial position may sometimes face obstacles. If this occurs, please refer the [Appendix 5.1](#51-obstacle-avoidance-note) for more details.
 
 ## 5. Appendix
 
@@ -118,7 +109,7 @@ Note: The vehicle's initial position may sometimes face obstacles or walls. If t
 
 In the gate area of the simulation, there is a orange flare in front of the gate which acts as an obstacle. In this case, you may choose to implement obstacle avoidance logic if you wish, and of course it would be a bonus point. However, it is not a requirement for the probation task. 
 
-If you choose not to implement obstacle avoidance, you may reset the simulation if the vehicle's initial position faces an obstacle or wall.
+If you choose not to implement obstacle avoidance, you may reset the simulation if the vehicle's initial position faces an obstacle.
 
 **Note:** We advice you to focus on the main task which is to go through the gate without obstacle avoidance. If there is time left, you may then implement obstacle avoidance logic.
 
@@ -153,6 +144,8 @@ To set up and run the simulation with ROS2 properly, follow these steps before s
    ros2 topic echo /mavros/state
    ```
 
+5. You may now start your ROS2 implementation to control the vehicle.
+
 ### 5.3. Useful Reference
 
 #### Useful commands
@@ -160,7 +153,8 @@ To set up and run the simulation with ROS2 properly, follow these steps before s
 # Monitor system status
 ros2 topic echo /mavros/state
 
-# Check available services
+# Check available topics, services
+ros2 topic list
 ros2 service list
 
 # Set vehicle mode

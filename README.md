@@ -58,6 +58,8 @@ probation_ws/
 
 ### Installation
 
+0. Fork the repository to your own github account.
+
 1. Clone and build the workspace:
    ```bash
    cd ~

@@ -2,7 +2,7 @@
 
 This repository contains the probation task, focusing on autonomous gate navigation using Unity simulation integrated with ROS 2.
 
-**You should NOT clone this repository from Mecatron github organization directly.** Instead, you should fork this repository to your own github and clone from it *(Please ask ChatGPT how to fork a github repository if you are unsure)*. After you fork and clone the repository, you should be on branch `probation/task`. If you are not on this branch, please switch to it using:
+**You should NOT clone this repository from Mecatron github organization directly.** Instead, you should **fork** this repository to your own github and clone from it *(Please ask ChatGPT how to fork a github repository if you are unsure)*. After you fork and clone the repository, you should be on branch `probation/task`. If you are not on this branch, please switch to it using:
 ```bash
 git checkout probation/task
 ```
@@ -15,14 +15,11 @@ You are supposed to implement your solution in this branch `probation/task`. Aft
 
 **Objectives**:
 - Integrate Unity simulation with ROS 2 using TCP communication
-- Implement computer vision for gate detection using bounding box data
 - Control the vehicle through MAVROS to successfully navigate through the detected gate
 - Demonstrate autonomous decision-making and control algorithms
 
 **Success Criteria**:
-- Vehicle successfully detects the gate using vision data
 - Vehicle navigates through the gate without collision
-- Proper integration between Unity simulation, ROS 2, and MAVROS
 
 ## 2. Setup and Dependencies
 

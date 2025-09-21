@@ -6,16 +6,14 @@ This repository contains the probation task, focusing on autonomous gate navigat
 
 **Task Goal**: Navigate an autonomous underwater vehicle (AUV) through a gate in a simulated environment.
 
-**Objectives**:
-- Integrate Unity simulation with ROS 2 using TCP communication
-- Implement computer vision for gate detection using bounding box data
-- Control the vehicle through MAVROS to successfully navigate through the detected gate
-- Demonstrate autonomous decision-making and control algorithms
+**Learning Objectives**:
+- Working with a simulation using ROS2
+- Process object detection data for meaningful insights
+- Develop autonomous decision-making and control algorithms
+- Manage a relatively large projects with many processes and nodes.
 
 **Success Criteria**:
-- Vehicle successfully detects the gate using vision data
-- Vehicle navigates through the gate without collision
-- Proper integration between Unity simulation, ROS 2, and MAVROS
+- The vehicle navigates autonomously through the gate 3 times, at 3 different random initial positions.
 
 ## 2. Setup and Dependencies
 
@@ -43,9 +41,13 @@ probation_ws/
 1. **ROS 2 Humble** - Full desktop installation
 2. **MAVROS** - For vehicle communication and control
    ```bash
-   sudo apt install ros-humble-mavros ros-humble-mavros-extras
+   sudo apt install ros-$ROS_DISTRO-mavros
    ```
 3. **Unity Simulation** - Provided simulation environment
+4. **Foxglove Bridge** - For monitoring various states of the vehicle
+   ```bash
+   sudo apt install ros-$ROS_DISTRO-foxglove-bridge
+   ```
 
 ### Installation
 
@@ -64,7 +66,7 @@ probation_ws/
 
 - **Random Initial Position**: The vehicle spawns at a random location and orientation
 - **Imperfect Detection**: Objects are only detected approximately 70% of the time
-- **Flight Mode Requirement**: Vehicle must be in GUIDED mode for autonomous control via topics. To switch back to control by keyboard, set mode to `MANUAL`.
+- **Flight Mode Requirement**: Vehicle must be in GUIDED mode for autonomous control via topics. To switch back to control by keyboard, set mode to `ALT_HOLD`.
 
 ### Vision System
 

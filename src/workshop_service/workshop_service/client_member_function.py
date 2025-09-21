@@ -1,4 +1,4 @@
-from example_interfaces.srv import AddTwoInts
+from mavros_msgs.srv import SetMode
 import rclpy
 from rclpy.node import Node
 
@@ -7,14 +7,13 @@ class MinimalClientAsync(Node):
 
     def __init__(self):
         super().__init__('minimal_client_async')
-        self.cli = self.create_client(AddTwoInts, 'add_two_ints')
+        self.cli = self.create_client(SetMode, '/mavros/set_mode')
         while not self.cli.wait_for_service(timeout_sec=1.0):
             self.get_logger().info('service not available, waiting again...')
-        self.req = AddTwoInts.Request()
+        self.req = SetMode.Request()
 
-    def send_request(self, a, b):
-        self.req.a = a
-        self.req.b = b
+    def send_request(self):
+        self.req.custom_mode = 'GUIDED'
         return self.cli.call_async(self.req)
 
 
@@ -22,12 +21,13 @@ def main():
     rclpy.init()
 
     minimal_client = MinimalClientAsync()
-    future = minimal_client.send_request(int(sys.argv[1]), int(sys.argv[2]))
+    future = minimal_client.send_request()
     rclpy.spin_until_future_complete(minimal_client, future)
     response = future.result()
-    minimal_client.get_logger().info(
-        'Result of add_two_ints: for %d + %d = %d' %
-        (int(sys.argv[1]), int(sys.argv[2]), response.sum))
+    if response.mode_sent:
+        minimal_client.get_logger().info('Service call successful')
+    else:
+        minimal_client.get_logger().info('Service call failed')
 
     minimal_client.destroy_node()
     rclpy.shutdown()

@@ -1,4 +1,5 @@
 build/
 install/
 log/
-workshop_main/workshop_main/__pycache__/
+src/workshop_main/workshop_main/__pycache__
+src/workshop_service/workshop_service/__pycache__

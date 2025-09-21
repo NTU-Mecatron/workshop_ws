@@ -101,7 +101,8 @@ To support your implementation, here is a suggested logic flow:
 
 The logic flow above is one of many possible solutions. Feel free to explore and implement your own strategies.
 
-Note: The vehicle's initial position may sometimes face obstacles. If this occurs, please refer the [Appendix 5.1](#51-obstacle-avoidance-note) for more details.
+> **NOTE:**
+> The vehicle's initial position may sometimes face obstacles. If this occurs, please refer the [Appendix 5.1](#51-obstacle-avoidance-note) for more details.
 
 ## 5. Appendix
 
@@ -111,7 +112,8 @@ In the gate area of the simulation, there is a orange flare in front of the gate
 
 If you choose not to implement obstacle avoidance, you may reset the simulation if the vehicle's initial position faces an obstacle.
 
-**Note:** We advice you to focus on the main task which is to go through the gate without obstacle avoidance. If there is time left, you may then implement obstacle avoidance logic.
+> **NOTE:**  
+> We advise you to focus on the main task, which is to go through the gate without obstacle avoidance.  If there is time left, you may then implement obstacle avoidance logic.
 
 ### 5.2. Proper Setup Flow
 

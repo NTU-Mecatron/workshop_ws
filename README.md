@@ -73,6 +73,7 @@ probation_ws/
 
    To avoid repeatedly sourcing the workspace, you may run the following command to add source to `~/.bashrc` file:
    ```bash
+   echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
    echo "source ~/probation_ws/install/local_setup.bash" >> ~/.bashrc
    ```
 
